@@ -11,7 +11,7 @@ export const getChatResponse = async (text) => {
   const completion = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: text,
-    temperature: 0.8,
+    temperature: 1,
     max_tokens: 1500,
     top_p: 1,
     frequency_penalty: 0.0,
