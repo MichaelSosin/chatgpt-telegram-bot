@@ -3,7 +3,7 @@ import bot from './bot.js';
 import { getChatResponse } from './openai.js';
 import server from './server.js';
 
-server.listen(process.env.PORT || 8080, () => {
+server.listen(8080, () => {
   console.log('Server started!');
 });
 
@@ -37,5 +37,12 @@ bot.launch().then(() => {
   console.log('Bot started!');
 });
 
-process.once('SIGINT', () => bot.stop('SIGINT'));
-process.once('SIGTERM', () => bot.stop('SIGTERM'));
+process.once('SIGINT', () => {
+  server.close();
+  bot.stop('SIGINT');
+});
+
+process.once('SIGTERM', () => {
+  server.close();
+  bot.stop('SIGTERM');
+});
