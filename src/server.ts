@@ -9,10 +9,6 @@ const requestListener = (req: IncomingMessage, res: ServerResponse): void => {
 
 const _server = http.createServer(requestListener);
 
-_server.listen(process.env.PORT || 3000, () => {
-  console.log('Server started!!');
-});
-
 export const startServer = (): void => {
   _server.listen(process.env.PORT || 3000, () => {
     console.log('Server started!!');
