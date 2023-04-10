@@ -2,7 +2,7 @@
   "name": "chatgpt-telegram-bot",
   "version": "0.2.0",
   "description": "Telegram bot that redirects requests to ChatGPT",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w && dotenv node index.js",
