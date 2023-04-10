@@ -1,3 +1,4 @@
+// refactor this file to typescript and add types to the functions
 import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new Configuration({
@@ -7,7 +8,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export const getChatResponse = async (text) => {
+export const getChatResponse = async (text: string): Promise<string> => {
   const completion = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: text,

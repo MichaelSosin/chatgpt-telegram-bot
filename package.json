@@ -1,12 +1,12 @@
 {
   "name": "chatgpt-telegram-bot",
   "version": "0.2.0",
-  "description": "Telegram bot that redirects requests to chatgpt",
-  "main": "src/index.ts",
-  "type": "module",
+  "description": "Telegram bot that redirects requests to ChatGPT",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "nodemon -r dotenv/config src/index.js",
-    "start": "node src/index.js"
+    "build": "tsc",
+    "dev": "tsc -w && dotenv node index.js",
+    "start": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,5 +14,9 @@
     "dotenv": "^16.0.3",
     "openai": "^3.2.1",
     "telegraf": "github:telegraf/telegraf"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.4"
   }
 }

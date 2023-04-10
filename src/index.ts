@@ -1,15 +1,17 @@
+import { Context } from 'telegraf';
 import { message } from 'telegraf/filters';
 import bot from './bot.js';
 import { getChatResponse } from './openai.js';
 import server from './server.js';
 
-server.listen(8080, () => {
-  console.log('Server started!');
+server.listen(process.env.PORT || 8080, () => {
+  console.log('Server started!!');
 });
 
-bot.start((ctx) => {
+bot.start((ctx: Context) => {
+  const { from } = ctx.message;
   console.log('New user:', ctx.from);
-  ctx.reply('Welcome, my dear user!');
+  ctx.reply(`Welcome, @${from.username}!`);
 });
 
 bot.on(message('text'), async (ctx) => {
