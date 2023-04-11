@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { Configuration, OpenAIApi } from 'openai';
 
 const _configuration = new Configuration({
@@ -19,4 +21,14 @@ export const getChatResponse = async (text: string): Promise<string> => {
   });
 
   return completion.data.choices[0].text;
+};
+
+export const getTranscription = async (audio: any): Promise<any> => {
+  const file = await fs.promises.readFile(
+    path.resolve(__dirname, '../file_0.mp3')
+  );
+
+  const transcription = await _openai.createTranscription(file, 'whisper-1');
+
+  return transcription.data.text;
 };
