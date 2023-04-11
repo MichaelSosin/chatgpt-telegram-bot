@@ -1,11 +1,12 @@
 import { Telegraf } from 'telegraf';
 import { message } from 'telegraf/filters';
-import { onBotMessage, onBotStart } from './handlers.js';
+import { onBotMessage, onBotStart, onBotVoice } from './handlers.js';
 
 const _bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
 _bot.start(onBotStart);
 _bot.on(message('text'), onBotMessage);
+_bot.on(message('voice'), onBotVoice);
 
 export const startBot = (): void => {
   _bot
